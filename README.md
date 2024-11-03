@@ -1,9 +1,9 @@
-# path_file_h
-![alt text](https://github.com/kimlar/path_file_h/blob/main/path_file-code.png "Showing the code")
+# path_file
+![alt text](https://github.com/kimlar/path_file/blob/main/path_file-code.png "Showing the code")
 
 <br>
 
-![alt text](https://github.com/kimlar/path_file_h/blob/main/path_file-running.png "Showing the code in action")
+![alt text](https://github.com/kimlar/path_file/blob/main/path_file-running.png "Showing the code in action")
 
 ## Examples of using path_file.h
 ```c
