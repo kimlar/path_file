@@ -5,7 +5,7 @@
 
 ![alt text](https://github.com/kimlar/path_file/blob/main/path_file-running.png "Showing the code in action")
 
-## Examples of using path_file.h
+## Example of using path_file.h
 ```c
 #include "path_file.h"
 ...
