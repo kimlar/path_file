@@ -1,81 +1,36 @@
-abc...
-
-UPDATE...
-
-# text_file_h
-![alt text](https://github.com/kimlar/text_file_h/blob/main/text_file-code-example.png "Showing the code")
+# path_file_h
+![alt text](https://github.com/kimlar/path_file_h/blob/main/path_file-code.png "Showing the code")
 
 <br>
 
-![alt text](https://github.com/kimlar/text_file_h/blob/main/text_file-running.png "Showing the code in action")
+![alt text](https://github.com/kimlar/path_file_h/blob/main/path_file-running.png "Showing the code in action")
 
-## Examples of using text_file.h
-
-### How to read a text file:
+## Examples of using path_file.h
 ```c
-#include "text_file.h"
+#include "path_file.h"
 ...
-str filename = "bigtextfile.txt";
-text_file file = text_file_openfor_read(filename);
-if (file == NULL)
-{
-	printf("Error: Failed to open for reading file\n");
-	exit(1); // Exit to OS
-}
-i64 length = text_file_get_length(filename);
-str text = malloc(length);
-text_file_read_str(text, length, file);
-printf("%s\n", text); // OUTPUT
-free(text);
-text_file_close(file);
+	str filename = "Temp/Resource.pack";
+
+	str get_path = path_file_get_path__new(filename);					// Returns: Temp
+	str get_path_slash = path_file_get_path_slash__new(filename);		// Returns: Temp/
+	str get_fullname = path_file_get_fullname__new(filename);			// Returns: Resource.pack
+	str get_basename = path_file_get_basename__new(filename);			// Returns: Resource
+	str get_extension = path_file_get_extension__new(filename);			// Returns: pack
+	str get_extension_dot = path_file_get_extension_dot__new(filename);	// Returns: .pack
+
+	printf("%s\n", get_path);
+	printf("%s\n", get_path_slash);
+	printf("%s\n", get_fullname);
+	printf("%s\n", get_basename);
+	printf("%s\n", get_extension);
+	printf("%s\n", get_extension_dot);
+
+	path_file_get_path__delete(get_path);
+	path_file_get_path_slash__delete(get_path_slash);
+	path_file_get_fullname__delete(get_fullname);
+	path_file_get_basename__delete(get_basename);
+	path_file_get_extension__delete(get_extension);
+	path_file_get_extension_dot__delete(get_extension_dot);
 ```
 
-### How to write a text file in append mode:
-```c
-#include "text_file.h"
-...
-text_file file = text_file_openfor_write_append("application.log");
-if (file == NULL)
-{
-	printf("Error: Failed to open for writing log file\n");
-	exit(1); // Exit to OS
-}
-str text = "LOG: Application has added an another entry to the log\n";
-text_file_write_str(text, file);
-text_file_close(file);
-```
-
-### How to read a text file with maximum safe guarding:
-```c
-#include "text_file.h"
-...
-str filename = "settings.txt";
-text_file file = text_file_openfor_read(filename);
-if (file == NULL)
-{
-	printf("Error: Failed to open for reading settings file\n");
-	exit(1); // Exit to OS
-}
-i64 length = text_file_get_length(filename);
-if (length == -1)
-{
-	printf("Error: Failed to get length of settings file\n");
-	exit(1); // Exit to OS
-}
-str text = malloc(length);
-if (text == NULL)
-{
-	printf("Error: Failed to allocate memory\n");
-	exit(1); // Exit to OS
-}
-if (!text_file_read_str(text, length, file))
-{
-	printf("Error: Failed to read settings file\n");
-	exit(1); // Exit to OS
-}
-printf("%s\n", text); // OUTPUT
-free(text);
-text_file_close(file);
-```
-
-This is a drop-in file for any Windows C projects to quickly add a higher level text file operation for reading and writing.
+This is a drop-in file for any Windows C projects to quickly add a higher level to get path and filename functions.
